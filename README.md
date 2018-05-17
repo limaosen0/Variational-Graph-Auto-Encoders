@@ -1,5 +1,5 @@
 # Variational-Graph-Auto-Encoders
-This is the implementation of paper "Variational Graph Auto-Encoder", which is published in NIPS 2016 Workshop.
+This is the implementation of paper "Variational Graph Auto-Encoders", which is published in NIPS 2016 Workshop.
 
 Thomas N. Kipf, Max Welling, Variational Graph Auto-Encoders, In NIPS Workshop on Bayesian Deep Learning, 2016.
 
@@ -30,4 +30,4 @@ numpy, scipy.sparse and matplotlib
 
 # Notes
 
-You can clone our program for practice, but if you use it in your published paper, please cite the paper "Variational Graph Auto-Encoder".
+You can clone our program for practice, but if you use it in your published paper, please cite the paper "Variational Graph Auto-Encoders".
