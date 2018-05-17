@@ -30,4 +30,4 @@ numpy, scipy.sparse and matplotlib
 
 # Notes
 
-You can clone our program, but if you use it in your published paper, please cite the paper "Variational Graph Auto-Encoder".
+You can clone our program for practice, but if you use it in your published paper, please cite the paper "Variational Graph Auto-Encoder".
