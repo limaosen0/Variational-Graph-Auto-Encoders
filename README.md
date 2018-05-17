@@ -6,7 +6,7 @@ Thomas N. Kipf, Max Welling, Variational Graph Auto-Encoders, In NIPS Workshop o
 # How to run the code?
 Insure that you have 4 GB memory in your GPU and you have installed the required module.
 
-We have provided the training data in right form in './data', and the main program can be run directly, like input 'CUDA_VISIBLE_DEVICES=0 python main.py' in terminal. For the first time of running, the program will load the data and generate a graph, which might cost much time. After that, a loaded graph would be saved in a numpy file in './data', and you can load the graph more efficiently.
+We have provided the training data in right form in './data', and the main program 'main.py' can be run directly, like input 'CUDA_VISIBLE_DEVICES=0 python main.py' in terminal. For the first time of running, the program will load the data and generate a graph, which might cost much time. After that, a loaded graph would be saved in a numpy file in './data', and you can load the graph more efficiently.
 
 During the training process, the program would print the loss value and validation accuracy. At last, the ROC curve would be saved in './result'.
 
