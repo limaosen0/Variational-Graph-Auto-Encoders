@@ -10,7 +10,8 @@ We have provided the training data in right form in './data', and the main progr
 
 During the training process, the program would print the loss value and validation accuracy. At last, the ROC curve would be saved in './result'.
 
-#Result
+# Result
+The result of our program is shown here.
 ![ROC_curve_citation](https://github.com/limaosen0/Variational-Graph-Auto-Encoders/blob/master/result/ROC_curve_citation.png)
 ![ROC_curve_facebook](https://github.com/limaosen0/Variational-Graph-Auto-Encoders/blob/master/result/ROC_curve_facebook.png)
 
@@ -20,3 +21,7 @@ Tensorflow 1.5
 igraph-python
 
 numpy, scipy.sparse and matplotlib
+
+# Notes
+
+You can clone our program, but if you use it in your published paper, please cite the paper "Variational Graph Auto-Encoder".
