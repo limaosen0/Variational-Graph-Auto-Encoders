@@ -11,8 +11,14 @@ We have provided the training data in right form in './data', and the main progr
 During the training process, the program would print the loss value and validation accuracy. At last, the ROC curve would be saved in './result'.
 
 # Result
-The result of our program is shown here.
+The result of our program is shown here (for citation dataset and facebook dataset, respectively).
+
+1 Citation
+
 ![ROC_curve_citation](https://github.com/limaosen0/Variational-Graph-Auto-Encoders/blob/master/result/ROC_curve_citation.png)
+
+2 Facebook
+
 ![ROC_curve_facebook](https://github.com/limaosen0/Variational-Graph-Auto-Encoders/blob/master/result/ROC_curve_facebook.png)
 
 # Tools and Modules
