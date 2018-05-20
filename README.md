@@ -13,13 +13,7 @@ During the training process, the program would print the loss value and validati
 # Result
 The result of our program is shown here (for citation dataset and facebook dataset, respectively).
 
-1 Citation
 
-![ROC_curve_citation](https://github.com/limaosen0/Variational-Graph-Auto-Encoders/blob/master/result/ROC_curve_citation.png)
-
-2 Facebook
-
-![ROC_curve_facebook](https://github.com/limaosen0/Variational-Graph-Auto-Encoders/blob/master/result/ROC_curve_facebook.png)
 
 # Tools and Modules
 Tensorflow 1.5
