@@ -24,6 +24,7 @@ class VGAE(object):
             self.dataset_name = args.dataset_name
             self.n_nodes = n_nodes
             self.n_hidden = args.n_hidden
+            self.n_embedding = args.n_embedding
             self.dropout = args.dropout
             self.learning_rate = args.learning_rate
             self.max_iteration = args.max_iteration                   
@@ -69,23 +70,28 @@ class VGAE(object):
         def encode(self):
 
             self.W_0_mu = utils.unif_weight_init(shape=[self.n_nodes, self.n_hidden])
-            self.W_1_mu = utils.unif_weight_init(shape=[self.n_hidden, self.n_hidden])            
-            self.W_0_sigma = utils.unif_weight_init(shape=[self.n_nodes, self.n_hidden])
-            self.W_1_sigma = utils.unif_weight_init(shape=[self.n_hidden, self.n_hidden])
+            self.b_0_mu = tf.Variable(tf.constant(0.01, dtype=tf.float32, shape=[self.n_hidden]))
+            self.W_1_mu = utils.unif_weight_init(shape=[self.n_hidden, self.n_embedding])
+            self.b_1_mu = tf.Variable(tf.constant(0.01, dtype=tf.float32, shape=[self.n_embedding]))
 
-            hidden_0_mu_ = utils.gcn_layer_id(self.norm_adj_mat, self.W_0_mu)
+            self.W_0_sigma = utils.unif_weight_init(shape=[self.n_nodes, self.n_hidden])
+            self.b_0_sigma = tf.Variable(tf.constant(0.01, dtype=tf.float32, shape=[self.n_hidden]))
+            self.W_1_sigma = utils.unif_weight_init(shape=[self.n_hidden, self.n_embedding])
+            self.b_1_sigma = tf.Variable(tf.constant(0.01, dtype=tf.float32, shape=[self.n_embedding]))
+
+            hidden_0_mu_ = utils.gcn_layer_id(self.norm_adj_mat, self.W_0_mu, self.b_0_mu)
             if self.dropout:
                 hidden_0_mu = tf.nn.dropout(hidden_0_mu_, self.keep_prob)
             else:
                 hidden_0_mu = hidden_0_mu_
-            self.mu = utils.gcn_layer(self.norm_adj_mat, hidden_0_mu, self.W_1_mu)
+            self.mu = utils.gcn_layer(self.norm_adj_mat, hidden_0_mu, self.W_1_mu, self.b_1_mu)
             
-            hidden_0_sigma_ = utils.gcn_layer_id(self.norm_adj_mat, self.W_0_sigma)
+            hidden_0_sigma_ = utils.gcn_layer_id(self.norm_adj_mat, self.W_0_sigma, self.b_0_sigma)
             if self.dropout:
                 hidden_0_sigma = tf.nn.dropout(hidden_0_sigma_, self.keep_prob)
             else:
                 hidden_0_sigma = hidden_0_sigma_
-            log_sigma = utils.gcn_layer(self.norm_adj_mat, hidden_0_sigma, self.W_1_sigma)
+            log_sigma = utils.gcn_layer(self.norm_adj_mat, hidden_0_sigma, self.W_1_sigma, self.b_1_sigma)
             self.sigma = tf.exp(log_sigma)
 
             return utils.sample_gaussian(self.mu, self.sigma)
@@ -129,7 +135,7 @@ class VGAE(object):
             plt.ylim([-0.05, 1.05])
             plt.xlabel('false positive rate')
             plt.ylabel('true positive rate')
-            plt.title('ROC Curve')
+            plt.title('ROC Curve:'+self.dataset_name)
             fig.savefig(os.path.join(self.result_dir, './ROC_curve_'+self.dataset_name+'.png'))
 
 
